@@ -7,8 +7,10 @@ import entities.Question;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -52,7 +54,7 @@ public class QuestionService {
         return result;
     }
 
-    @POST
+    @PUT
     @Path("/editQuestion")
     @Consumes(MediaType.APPLICATION_JSON)
     public String edit(String strData) {
@@ -63,9 +65,8 @@ public class QuestionService {
         return result;
     }
 
-    @POST
+    @DELETE
     @Path("/deleteQuestion/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
     public String delete(@PathParam("id") int id) {
         boolean bl = dao.đelete(id);
         Gson son = new Gson();

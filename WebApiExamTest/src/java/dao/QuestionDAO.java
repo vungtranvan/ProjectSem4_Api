@@ -3,6 +3,7 @@ package dao;
 import dao.interfaces.IQuestionDAO;
 import entities.Question;
 import hiberNate.HibernateUtil;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -51,6 +52,7 @@ public class QuestionDAO implements IQuestionDAO{
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
+            entity.setCreatedDate(new Date());
             session.save(entity);
             session.getTransaction().commit();
             return true;
@@ -68,6 +70,7 @@ public class QuestionDAO implements IQuestionDAO{
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
+            entity.setUpdatedDate(new Date());
             session.update(entity);
             session.getTransaction().commit();
             return true;

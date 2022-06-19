@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
  * @author vungk
  */
 @Stateless
-@Path("category")
+@Path("categoryExam")
 public class CategoryExamService {
 
     private ICategoryExamDAO dao;

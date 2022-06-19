@@ -4,6 +4,7 @@ import dao.interfaces.IAccountDAO;
 import dto.ChangPasswordDto;
 import entities.Account;
 import hiberNate.HibernateUtil;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -91,6 +92,7 @@ public class AccountDAO implements IAccountDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
+            entity.setCreatedDate(new Date());
             session.save(entity);
             session.getTransaction().commit();
             return true;
@@ -108,6 +110,7 @@ public class AccountDAO implements IAccountDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
+            entity.setUpdatedDate(new Date());
             session.update(entity);
             session.getTransaction().commit();
             return true;

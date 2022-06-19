@@ -8,8 +8,10 @@ import entities.Account;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -60,14 +62,18 @@ public class AccountService {
     @Path("/addAccount")
     @Consumes(MediaType.APPLICATION_JSON)
     public String add(String strData) {
-        Gson son = new Gson();
-        Account entity = son.fromJson(strData, Account.class);
-        boolean bl = dao.add(entity);
-        String result = son.toJson(bl);
-        return result;
+        try {
+            Gson son = new Gson();
+            Account entity = son.fromJson(strData, Account.class);
+            boolean bl = dao.add(entity);
+            String result = son.toJson(bl);
+            return result;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
-    @POST
+    @PUT
     @Path("/editAccount")
     @Consumes(MediaType.APPLICATION_JSON)
     public String edit(String strData) {
@@ -78,9 +84,8 @@ public class AccountService {
         return result;
     }
 
-    @POST
+    @DELETE
     @Path("/deleteAccount/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
     public String delete(@PathParam("id") int id) {
         boolean bl = dao.đelete(id);
         Gson son = new Gson();
