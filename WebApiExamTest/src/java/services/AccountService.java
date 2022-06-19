@@ -62,15 +62,11 @@ public class AccountService {
     @Path("/addAccount")
     @Consumes(MediaType.APPLICATION_JSON)
     public String add(String strData) {
-        try {
-            Gson son = new Gson();
-            Account entity = son.fromJson(strData, Account.class);
-            boolean bl = dao.add(entity);
-            String result = son.toJson(bl);
-            return result;
-        } catch (Exception e) {
-            throw e;
-        }
+        Gson son = new Gson();
+        Account entity = son.fromJson(strData, Account.class);
+        boolean bl = dao.add(entity);
+        String result = son.toJson(bl);
+        return result;
     }
 
     @PUT
