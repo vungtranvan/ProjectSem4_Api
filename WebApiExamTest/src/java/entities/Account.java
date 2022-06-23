@@ -50,11 +50,7 @@ public class Account implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "Image")
     private String image;
-    
-    @Column(name = "Birthday")
-    @Temporal(TemporalType.DATE)
-    private Date birthday;
-    
+       
     @Size(max = 2147483647)
     @Column(name = "Address")
     private String address;
@@ -141,14 +137,6 @@ public class Account implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 
     public String getAddress() {

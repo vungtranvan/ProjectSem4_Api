@@ -11,7 +11,6 @@ UserName varchar(25) not null,
 [Name] nvarchar(50) not null,
 Email varchar(50) not null,
 [Image] text,
-Birthday date,
 [Address] ntext,
 Sex bit not null,
 IsAdmin bit not null,
@@ -73,8 +72,8 @@ insert into CategoryExam(Name,CreatedDate) values
 (N'Anh','2022-06-15')
 go
 
-insert into Account(UserName,[Password],[Name],Email,[Image],Birthday,[Address],Sex,IsAdmin,CreatedDate)
-values ('Admin','Admin@123',N'Admin Manager','admin@gmail.com','image_default','2001-01-15',N'Ba Vì',1,1,'2022-06-15')
+insert into Account(UserName,[Password],[Name],Email,[Image],[Address],Sex,IsAdmin,CreatedDate)
+values ('Admin','Admin@123',N'Admin Manager','admin@gmail.com','image_default',N'Ba Vì',1,1,'2022-06-15')
 go
 
 select * from CategoryExam
