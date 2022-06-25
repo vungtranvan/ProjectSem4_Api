@@ -32,7 +32,7 @@ public class CategoryExamService {
     }
 
     @GET
-    @Path("/getbyId/{id}")
+    @Path("/getById/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public CategoryExam getbyId(@PathParam("id") int id) {
         return dao.findById(id);

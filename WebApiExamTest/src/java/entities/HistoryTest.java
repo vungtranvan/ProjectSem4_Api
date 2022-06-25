@@ -1,78 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author vungk
  */
-@Entity
-@Table(name = "HistoryTest")
 public class HistoryTest implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
     private Integer id;
-
-    @Column(name = "CorectMark")
+    private int userId;
+    private int categoryExamId;
     private Integer corectMark;
-
-    @Column(name = "TotalMark")
     private Integer totalMark;
-
-    @NotNull
-    @Column(name = "Status")
     private boolean status;
-
-    @NotNull
-    @Column(name = "CreatedDate")
-    private Date createdDate;
-
-    @Column(name = "UpdatedDate")
-    private Date updatedDate;
-
-    @JoinColumn(name = "CategoryExamId", referencedColumnName = "Id")
-    @ManyToOne
-    private CategoryExam categoryExamId;
-
-    @JoinColumn(name = "UserId", referencedColumnName = "Id")
-    @ManyToOne
-    private Account userId;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "historyTest")
-    private Collection<HistoryTestDetail> historyTestDetailCollection;
 
     public HistoryTest() {
     }
 
-    public HistoryTest(Integer id) {
-        this.id = id;
+    public HistoryTest(int userId, int categoryExamId, Integer corectMark, Integer totalMark, boolean status) {
+        this.userId = userId;
+        this.categoryExamId = categoryExamId;
+        this.corectMark = corectMark;
+        this.totalMark = totalMark;
+        this.status = status;
     }
 
-    public HistoryTest(Integer id, boolean status, Date createdDate) {
+    public HistoryTest(Integer id, int userId, int categoryExamId, Integer corectMark, Integer totalMark, boolean status) {
         this.id = id;
+        this.userId = userId;
+        this.categoryExamId = categoryExamId;
+        this.corectMark = corectMark;
+        this.totalMark = totalMark;
         this.status = status;
-        this.createdDate = createdDate;
     }
 
     public Integer getId() {
@@ -81,6 +42,22 @@ public class HistoryTest implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getCategoryExamId() {
+        return categoryExamId;
+    }
+
+    public void setCategoryExamId(int categoryExamId) {
+        this.categoryExamId = categoryExamId;
     }
 
     public Integer getCorectMark() {
@@ -99,53 +76,12 @@ public class HistoryTest implements Serializable {
         this.totalMark = totalMark;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Date getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public CategoryExam getCategoryExamId() {
-        return categoryExamId;
-    }
-
-    public void setCategoryExamId(CategoryExam categoryExamId) {
-        this.categoryExamId = categoryExamId;
-    }
-
-    public Account getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Account userId) {
-        this.userId = userId;
-    }
-
-    @XmlTransient
-    public Collection<HistoryTestDetail> getHistoryTestDetailCollection() {
-        return historyTestDetailCollection;
-    }
-
-    public void setHistoryTestDetailCollection(Collection<HistoryTestDetail> historyTestDetailCollection) {
-        this.historyTestDetailCollection = historyTestDetailCollection;
     }
 
 }

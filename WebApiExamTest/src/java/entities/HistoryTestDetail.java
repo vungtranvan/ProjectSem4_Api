@@ -1,58 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 /**
  *
  * @author vungk
  */
-@Entity
-@Table(name = "HistoryTestDetail")
 public class HistoryTestDetail implements Serializable {
-    @EmbeddedId
-    protected HistoryTestDetailPK historyTestDetailPK;
-    
-    @Size(max = 5)
-    @Column(name = "AnswerChoice")
+
+    private int historyTestId;
+    private int questionId;
     private String answerChoice;
-    
-    @JoinColumn(name = "HistoryTestId", referencedColumnName = "Id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private HistoryTest historyTest;
-    
-    @JoinColumn(name = "QuestionId", referencedColumnName = "Id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Question question;
 
     public HistoryTestDetail() {
     }
 
-    public HistoryTestDetail(HistoryTestDetailPK historyTestDetailPK) {
-        this.historyTestDetailPK = historyTestDetailPK;
-    }
-
     public HistoryTestDetail(int historyTestId, int questionId) {
-        this.historyTestDetailPK = new HistoryTestDetailPK(historyTestId, questionId);
+        this.historyTestId = historyTestId;
+        this.questionId = questionId;
     }
 
-    public HistoryTestDetailPK getHistoryTestDetailPK() {
-        return historyTestDetailPK;
+    public HistoryTestDetail(int historyTestId, int questionId, String answerChoice) {
+        this.historyTestId = historyTestId;
+        this.questionId = questionId;
+        this.answerChoice = answerChoice;
     }
 
-    public void setHistoryTestDetailPK(HistoryTestDetailPK historyTestDetailPK) {
-        this.historyTestDetailPK = historyTestDetailPK;
+    public int getHistoryTestId() {
+        return historyTestId;
+    }
+
+    public void setHistoryTestId(int historyTestId) {
+        this.historyTestId = historyTestId;
+    }
+
+    public int getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
     }
 
     public String getAnswerChoice() {
@@ -63,19 +50,4 @@ public class HistoryTestDetail implements Serializable {
         this.answerChoice = answerChoice;
     }
 
-    public HistoryTest getHistoryTest() {
-        return historyTest;
-    }
-
-    public void setHistoryTest(HistoryTest historyTest) {
-        this.historyTest = historyTest;
-    }
-
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    } 
 }

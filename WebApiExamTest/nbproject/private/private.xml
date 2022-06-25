@@ -5,8 +5,6 @@
         <group>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/AccountDAO.java</file>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/entities/Account.java</file>
-            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/services/QuestionService.java</file>
-            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/services/AccountService.java</file>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/CategoryExamDAO.java</file>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/QuestionDAO.java</file>
         </group>
