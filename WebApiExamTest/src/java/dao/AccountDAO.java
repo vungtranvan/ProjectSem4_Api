@@ -3,7 +3,6 @@ package dao;
 import dao.interfaces.IAccountDAO;
 import db.DBManager;
 import dto.ChangPasswordDto;
-import dto.PagedAccountList;
 import entities.Account;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -19,29 +18,16 @@ import java.util.List;
 public class AccountDAO implements IAccountDAO {
 
     @Override
-    public PagedAccountList getAll(int pageIndex, int pageSize, String keySearch) {
+    public List<Account> getAll(String keySearch) {
         CallableStatement stm = null;
         ResultSet rs = null;
         Connection conn = DBManager.openConnection();
-        int skip = (pageIndex - 1) * pageSize;
         if (keySearch == null) {
             keySearch = "";
         }
         try {
-            stm = conn.prepareCall("{call App_Account_CountDataOfGetAll(?)}");
+            stm = conn.prepareCall("{call App_Account_GetAll(?)}");
             stm.setString(1, keySearch);
-            rs = stm.executeQuery();
-            int total = 0;
-            if (rs.next()) {
-                total = rs.getInt(1);
-            }
-            if (total == 0) {
-                return null;
-            }
-            stm = conn.prepareCall("{call App_Account_GetAll(?,?,?)}");
-            stm.setInt(1, skip);
-            stm.setInt(2, pageSize);
-            stm.setString(3, keySearch);
             List<Account> lstData = new ArrayList<>();
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -57,8 +43,7 @@ public class AccountDAO implements IAccountDAO {
                 item.setIsAdmin(rs.getBoolean("isAdmin"));
                 lstData.add(item);
             }
-            PagedAccountList pagedList = new PagedAccountList(total, lstData);
-            return pagedList;
+            return lstData;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

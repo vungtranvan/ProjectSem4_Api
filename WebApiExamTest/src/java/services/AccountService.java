@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import dao.interfaces.IAccountDAO;
 import dao.AccountDAO;
 import dto.ChangPasswordDto;
-import dto.PagedAccountList;
 import entities.Account;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -34,8 +34,8 @@ public class AccountService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public PagedAccountList getAll(@QueryParam("pageIndex") int pageIndex, @QueryParam("pageSize") int pageSize, @QueryParam("keySearch") String keySearch) {
-        return dao.getAll(pageIndex, pageSize, keySearch);
+    public List<Account> getAll(@QueryParam("keySearch") String keySearch) {
+        return dao.getAll(keySearch);
     }
 
     @GET

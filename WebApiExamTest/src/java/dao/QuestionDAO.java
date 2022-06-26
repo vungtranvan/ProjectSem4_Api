@@ -2,7 +2,6 @@ package dao;
 
 import dao.interfaces.IQuestionDAO;
 import db.DBManager;
-import dto.PagedQuestionList;
 import entities.Question;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -18,7 +17,7 @@ import java.util.List;
 public class QuestionDAO implements IQuestionDAO {
 
     @Override
-    public PagedQuestionList getAll(int pageIndex, int pageSize, String keySearch) {
+    public List<Question> getAll(int pageIndex, int pageSize, String keySearch) {
         CallableStatement stm = null;
         ResultSet rs = null;
         Connection conn = DBManager.openConnection();
@@ -27,20 +26,8 @@ public class QuestionDAO implements IQuestionDAO {
             keySearch = "";
         }
         try {
-            stm = conn.prepareCall("{call App_Question_CountDataOfGetAll(?)}");
+            stm = conn.prepareCall("{call App_Question_GetAll(?)}");
             stm.setString(1, keySearch);
-            rs = stm.executeQuery();
-            int total = 0;
-            if (rs.next()) {
-                total = rs.getInt(1);
-            }
-            if (total == 0) {
-                return null;
-            }
-            stm = conn.prepareCall("{call App_Question_GetAll(?,?,?)}");
-            stm.setInt(1, skip);
-            stm.setInt(2, pageSize);
-            stm.setString(3, keySearch);
             List<Question> lstData = new ArrayList<>();
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -57,8 +44,7 @@ public class QuestionDAO implements IQuestionDAO {
                 item.setImage(rs.getString("image"));
                 lstData.add(item);
             }
-            PagedQuestionList pagedList = new PagedQuestionList(total, lstData);
-            return pagedList;
+            return lstData;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

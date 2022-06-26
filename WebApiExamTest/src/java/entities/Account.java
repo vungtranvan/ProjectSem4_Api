@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *
@@ -9,7 +8,7 @@ import java.util.Date;
  */
 public class Account implements Serializable {
 
-    private Integer id;
+    private int _id;
     private String userName;
     private String password;
     private String name;
@@ -22,8 +21,8 @@ public class Account implements Serializable {
     public Account() {
     }
 
-    public Account(Integer id) {
-        this.id = id;
+    public Account(int _id) {
+        this._id = _id;
     }
 
     public Account(String userName, String password, String name, String email, String image, String address, boolean sex, boolean isAdmin) {
@@ -37,8 +36,8 @@ public class Account implements Serializable {
         this.isAdmin = isAdmin;
     }
 
-    public Account(Integer id, String userName, String password, String name, String email, String image, String address, boolean sex, boolean isAdmin) {
-        this.id = id;
+    public Account(int _id, String userName, String password, String name, String email, String image, String address, boolean sex, boolean isAdmin) {
+        this._id = _id;
         this.userName = userName;
         this.password = password;
         this.name = name;
@@ -49,12 +48,12 @@ public class Account implements Serializable {
         this.isAdmin = isAdmin;
     }
 
-    public Integer getId() {
-        return id;
+    public int getId() {
+        return _id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(int _id) {
+        this._id = _id;
     }
 
     public String getUserName() {

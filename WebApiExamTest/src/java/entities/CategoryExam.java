@@ -8,27 +8,27 @@ import java.io.Serializable;
  */
 public class CategoryExam implements Serializable {
 
-    private Integer id;
+    private int _id;
     private String name;
 
     public CategoryExam() {
     }
 
-    public CategoryExam(Integer id) {
-        this.id = id;
+    public CategoryExam(int _id) {
+        this._id = _id;
     }
 
-    public CategoryExam(Integer id, String name) {
-        this.id = id;
+    public CategoryExam(int _id, String name) {
+        this._id = _id;
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
+    public int getId() {
+        return _id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(int _id) {
+        this._id = _id;
     }
 
     public String getName() {

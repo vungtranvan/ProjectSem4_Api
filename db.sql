@@ -124,21 +124,11 @@ GO
 
 -- Account
 CREATE PROC App_Account_GetAll
-@skip int,
-@take int,
 @keySearch nvarchar(250)
 AS 
 BEGIN 
 Select * from Account where UserName LIKE '%'+@keySearch+'%' or [Name] Like '%'+@keySearch+'%' or Email Like '%'+@keySearch+'%' or [Address] Like '%'+@keySearch+'%'
-ORDER BY Id OFFSET @skip ROWS FETCH NEXT @take ROWS ONLY
-END
-GO
-
-CREATE PROC App_Account_CountDataOfGetAll
-@keySearch nvarchar(250)
-AS 
-BEGIN 
-Select COUNT(*) as 'Total' from Account where UserName LIKE '%'+@keySearch+'%' or [Name] Like '%'+@keySearch+'%' or Email Like '%'+@keySearch+'%' or [Address] Like '%'+@keySearch+'%'
+ORDER BY Id desc
 END
 GO
 
@@ -217,23 +207,12 @@ GO
 
 -- Question
 CREATE PROC App_Question_GetAll
-@skip int,
-@take int,
 @keySearch nvarchar(250)
 AS 
 BEGIN 
 Select q.*, c.Name as 'CategoryExamName' from Question as q LEFT JOIN CategoryExam as c ON q.CategoryExamId = c.Id 
 where q.Name Like '%'+@keySearch+'%' or c.Name = @keySearch
-ORDER BY Id OFFSET @skip ROWS FETCH NEXT @take ROWS ONLY
-END
-GO
-
-CREATE PROC App_Question_CountDataOfGetAll
-@keySearch nvarchar(250)
-AS 
-BEGIN 
-Select COUNT(*) as 'Total' from Question as q LEFT JOIN CategoryExam as c ON q.CategoryExamId = c.Id 
-where q.Name Like '%'+@keySearch+'%' or c.Name = @keySearch
+ORDER BY Id desc
 END
 GO
 
@@ -288,13 +267,13 @@ GO
 
 select * from CategoryExam
 go
-select * from Account where UserName Like '%1%' or [Name] Like '%1%' or Email Like '%1%' or [Address] Like '%1%'
-go
+--select * from Account where UserName Like '%1%' or [Name] Like '%1%' or Email Like '%1%' or [Address] Like '%1%'
+--go
 
-SELECT COUNT(*) FROM Account
+--SELECT COUNT(*) FROM Account
 
-SELECT * FROM Account ORDER BY Id OFFSET 1 ROWS FETCH NEXT 10 ROWS ONLY
-GO
+--SELECT * FROM Account ORDER BY Id OFFSET 1 ROWS FETCH NEXT 10 ROWS ONLY
+--GO
 
 --EXEC App_Account_CountDataOfGetAll @keySearch = 'Admin'
---DROP PROCEDURE App_Question_GetById
+--DROP PROCEDURE App_Account_GetAll

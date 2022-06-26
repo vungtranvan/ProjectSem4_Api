@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 public class Question implements Serializable {
 
-    private Integer id;
+    private int _id;
     private String name;
     private int categoryExamId;
     private String categoryExamName;
@@ -22,16 +22,16 @@ public class Question implements Serializable {
     public Question() {
     }
 
-    public Question(Integer id) {
-        this.id = id;
+    public Question(int _id) {
+        this._id = _id;
     }
 
-    public Integer getId() {
-        return id;
+    public int getId() {
+        return _id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(int _id) {
+        this._id = _id;
     }
 
     public String getName() {

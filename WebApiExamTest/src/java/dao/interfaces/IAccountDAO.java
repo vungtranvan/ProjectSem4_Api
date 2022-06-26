@@ -1,8 +1,8 @@
 package dao.interfaces;
 
 import dto.ChangPasswordDto;
-import dto.PagedAccountList;
 import entities.Account;
+import java.util.List;
 
 /**
  *
@@ -10,7 +10,7 @@ import entities.Account;
  */
 public interface IAccountDAO {
 
-    public PagedAccountList getAll(int pageIndex, int pageSize, String keySearch);
+    public List<Account> getAll(String keySearch);
 
     public Account findById(int id);
 

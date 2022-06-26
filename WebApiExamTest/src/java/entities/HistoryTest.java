@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *
@@ -9,17 +8,17 @@ import java.util.Date;
  */
 public class HistoryTest implements Serializable {
 
-    private Integer id;
+    private int _id;
     private int userId;
     private int categoryExamId;
-    private Integer corectMark;
-    private Integer totalMark;
+    private int corectMark;
+    private int totalMark;
     private boolean status;
 
     public HistoryTest() {
     }
 
-    public HistoryTest(int userId, int categoryExamId, Integer corectMark, Integer totalMark, boolean status) {
+    public HistoryTest(int userId, int categoryExamId, int corectMark, int totalMark, boolean status) {
         this.userId = userId;
         this.categoryExamId = categoryExamId;
         this.corectMark = corectMark;
@@ -27,8 +26,8 @@ public class HistoryTest implements Serializable {
         this.status = status;
     }
 
-    public HistoryTest(Integer id, int userId, int categoryExamId, Integer corectMark, Integer totalMark, boolean status) {
-        this.id = id;
+    public HistoryTest(int _id, int userId, int categoryExamId, int corectMark, int totalMark, boolean status) {
+        this._id = _id;
         this.userId = userId;
         this.categoryExamId = categoryExamId;
         this.corectMark = corectMark;
@@ -36,12 +35,12 @@ public class HistoryTest implements Serializable {
         this.status = status;
     }
 
-    public Integer getId() {
-        return id;
+    public int getId() {
+        return _id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(int _id) {
+        this._id = _id;
     }
 
     public int getUserId() {
@@ -60,19 +59,19 @@ public class HistoryTest implements Serializable {
         this.categoryExamId = categoryExamId;
     }
 
-    public Integer getCorectMark() {
+    public int getCorectMark() {
         return corectMark;
     }
 
-    public void setCorectMark(Integer corectMark) {
+    public void setCorectMark(int corectMark) {
         this.corectMark = corectMark;
     }
 
-    public Integer getTotalMark() {
+    public int getTotalMark() {
         return totalMark;
     }
 
-    public void setTotalMark(Integer totalMark) {
+    public void setTotalMark(int totalMark) {
         this.totalMark = totalMark;
     }
 
