@@ -2,6 +2,7 @@ package dao;
 
 import dao.interfaces.IQuestionDAO;
 import db.DBManager;
+import dto.QuestionVm;
 import entities.Question;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -17,31 +18,23 @@ import java.util.List;
 public class QuestionDAO implements IQuestionDAO {
 
     @Override
-    public List<Question> getAll(int pageIndex, int pageSize, String keySearch) {
+    public List<QuestionVm> getAll(String keySearch) {
         CallableStatement stm = null;
         ResultSet rs = null;
         Connection conn = DBManager.openConnection();
-        int skip = (pageIndex - 1) * pageSize;
         if (keySearch == null) {
             keySearch = "";
         }
         try {
             stm = conn.prepareCall("{call App_Question_GetAll(?)}");
             stm.setString(1, keySearch);
-            List<Question> lstData = new ArrayList<>();
+            List<QuestionVm> lstData = new ArrayList<>();
             rs = stm.executeQuery();
             while (rs.next()) {
-                Question item = new Question();
+                QuestionVm item = new QuestionVm();
                 item.setId(rs.getInt("id"));
                 item.setName(rs.getString("name"));
-                item.setCategoryExamId(rs.getInt("categoryExamId"));
                 item.setCategoryExamName(rs.getString("categoryExamName"));
-                item.setAnswerA(rs.getString("answer_a"));
-                item.setAnswerB(rs.getString("answer_b"));
-                item.setAnswerC(rs.getString("answer_c"));
-                item.setAnswerD(rs.getString("answer_d"));
-                item.setAnswerCorrect(rs.getString("answerCorrect"));
-                item.setImage(rs.getString("image"));
                 lstData.add(item);
             }
             return lstData;

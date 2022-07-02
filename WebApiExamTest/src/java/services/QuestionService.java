@@ -3,6 +3,7 @@ package services;
 import com.google.gson.Gson;
 import dao.interfaces.IQuestionDAO;
 import dao.QuestionDAO;
+import dto.QuestionVm;
 import entities.Question;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -33,8 +34,8 @@ public class QuestionService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Question> getAll(@QueryParam("pageIndex") int pageIndex, @QueryParam("pageSize") int pageSize, @QueryParam("keySearch") String keySearch) {
-        return dao.getAll(pageIndex, pageSize, keySearch);
+    public List<QuestionVm> getAll(@QueryParam("keySearch") String keySearch) {
+        return dao.getAll(keySearch);
     }
 
     @GET

@@ -5,6 +5,7 @@
  */
 package dao.interfaces;
 
+import dto.QuestionVm;
 import entities.Question;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface IQuestionDAO {
 
-    public List<Question> getAll(int pageIndex, int pageSize, String keySearch);
+    public List<QuestionVm> getAll(String keySearch);
 
     public Question findById(int id);
 
