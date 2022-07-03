@@ -69,6 +69,20 @@ public class AccountService {
         String result = son.toJson(bl);
         return result;
     }
+    
+    @POST
+    @Path("/registerAccount")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String register(String strData) {
+        Gson son = new Gson();
+        Account entity = son.fromJson(strData, Account.class);
+        boolean bl = dao.add(entity);
+        if (bl) {
+            entity = dao.findByUserName(entity.getUserName());
+            return son.toJson(entity.getId());
+        }
+        return "0";
+    }
 
     @PUT
     @Path("/editAccount")
