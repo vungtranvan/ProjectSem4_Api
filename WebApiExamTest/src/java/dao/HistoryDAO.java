@@ -19,6 +19,40 @@ import java.util.List;
 public class HistoryDAO implements IHistoryDAO {
 
     @Override
+    public List<HistoryVm> getAll(String keySearch) {
+        CallableStatement stm = null;
+        ResultSet rs = null;
+        Connection conn = DBManager.openConnection();
+        if (keySearch == null) {
+            keySearch = "";
+        }
+        try {
+            stm = conn.prepareCall("{call App_HistoryTest_GetAllByAdmin(?)}");
+            stm.setString(1, keySearch);
+
+            List<HistoryVm> lstData = new ArrayList<>();
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                HistoryVm item = new HistoryVm();
+                item.setId(rs.getInt("id"));
+                item.setCategoryExamName("categoryExamName");
+                item.setAccountName("accountName");
+                item.setCorectMark(rs.getInt("corectMark"));
+                item.setTotalMark(rs.getInt("totalMark"));
+                item.setStatus(rs.getBoolean("status"));
+                lstData.add(item);
+            }
+            return lstData;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.closeAll(conn, stm, rs);
+        }
+
+        return null;
+    }
+
+    @Override
     public List<HistoryVm> getAll(int userId, int categoryExamId) {
         CallableStatement stm = null;
         ResultSet rs = null;

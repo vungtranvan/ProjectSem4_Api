@@ -15,6 +15,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -32,7 +33,14 @@ public class HistoryService {
     }
 
     @GET
-    @Path("/getAll/{userId}/{categoryExamId}")
+    @Path("/getAllByAdmin")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<HistoryVm> getAll(@QueryParam("keySearch") String keySearch) {
+        return dao.getAll(keySearch);
+    }
+    
+    @GET
+    @Path("/getAllByMember/{userId}/{categoryExamId}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<HistoryVm> getAll(@PathParam("userId") int userId, @PathParam("categoryExamId") int categoryExamId) {
         return dao.getAll(userId, categoryExamId);

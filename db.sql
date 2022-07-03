@@ -201,7 +201,7 @@ CREATE PROC App_Account_GetById
 @id int
 AS 
 BEGIN 
-Select * from Account Where Id = id
+Select * from Account Where Id = @id
 END
 GO
 
@@ -276,7 +276,7 @@ CREATE PROC App_Question_GetAll
 AS 
 BEGIN 
 Select q.Id, q.Name, c.Name as 'CategoryExamName' from Question as q LEFT JOIN CategoryExam as c ON q.CategoryExamId = c.Id 
-where q.Name Like '%'+@keySearch+'%' or c.Name = @keySearch
+where q.Name Like '%'+@keySearch+'%' or c.Name Like '%'+@keySearch+'%'
 ORDER BY Id desc
 END
 GO
@@ -338,6 +338,19 @@ AS
 BEGIN
 SELECT h.Id, h.CorectMark, h.TotalMark, h.Status FROM HistoryTest as h WHERE h.UserId = @userId AND h.CategoryExamId = @categoryExamId AND Id != 1
 ORDER BY Id asc
+END
+GO
+
+CREATE PROC App_HistoryTest_GetAllByAdmin
+@keySearch nvarchar(250)
+AS
+BEGIN
+SELECT h.Id, a.Name as 'AccountName',c.Name as 'CategoryExamName', h.CorectMark, h.TotalMark, h.Status 
+FROM HistoryTest as h 
+LEFT JOIN Account as a ON h.UserId = a.Id 
+LEFT JOIN CategoryExam as c ON h.CategoryExamId = c.Id 
+WHERE h.Id != 1 AND a.Name Like '%'+@keySearch+'%' or c.Name Like '%'+@keySearch+'%' or h.Status Like '%'+@keySearch+'%'
+ORDER BY h.Id desc
 END
 GO
 

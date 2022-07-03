@@ -11,11 +11,30 @@ import java.io.Serializable;
  *
  * @author vungk
  */
-public class HistoryVm implements Serializable{
+public class HistoryVm implements Serializable {
+
     private int _id;
+    private String accountName;
+    private String categoryExamName;
     private int corectMark;
     private int totalMark;
     private boolean status;
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public String getCategoryExamName() {
+        return categoryExamName;
+    }
+
+    public void setCategoryExamName(String categoryExamName) {
+        this.categoryExamName = categoryExamName;
+    }
 
     public int getId() {
         return _id;
