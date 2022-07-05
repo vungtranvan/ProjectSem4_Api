@@ -35,9 +35,9 @@ public class HistoryDAO implements IHistoryDAO {
             while (rs.next()) {
                 HistoryVm item = new HistoryVm();
                 item.setId(rs.getInt("id"));
-                item.setCategoryExamName("categoryExamName");
-                item.setAccountName("accountName");
-                item.setCorectMark(rs.getInt("corectMark"));
+                item.setCategoryExamName(rs.getString("categoryExamName"));
+                item.setAccountName(rs.getString("accountName"));
+                item.setCorrectMark(rs.getInt("correctMark"));
                 item.setTotalMark(rs.getInt("totalMark"));
                 item.setStatus(rs.getBoolean("status"));
                 lstData.add(item);
@@ -66,7 +66,7 @@ public class HistoryDAO implements IHistoryDAO {
             while (rs.next()) {
                 HistoryVm item = new HistoryVm();
                 item.setId(rs.getInt("id"));
-                item.setCorectMark(rs.getInt("corectMark"));
+                item.setCorrectMark(rs.getInt("correctMark"));
                 item.setTotalMark(rs.getInt("totalMark"));
                 item.setStatus(rs.getBoolean("status"));
                 lstData.add(item);

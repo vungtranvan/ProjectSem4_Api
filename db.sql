@@ -43,7 +43,7 @@ Create table [HistoryTest]
 Id int primary key identity,
 UserId int FOREIGN KEY REFERENCES Account(Id),
 CategoryExamId int FOREIGN KEY REFERENCES CategoryExam(Id),
-CorectMark int,
+CorrectMark int,
 TotalMark int,
 [Status] bit not null
 )
@@ -336,7 +336,7 @@ CREATE PROC App_HistoryTest_GetAllByUseIdAndCategoryExamId
 @categoryExamId int
 AS
 BEGIN
-SELECT h.Id, h.CorectMark, h.TotalMark, h.Status FROM HistoryTest as h WHERE h.UserId = @userId AND h.CategoryExamId = @categoryExamId AND Id != 1
+SELECT h.Id, h.CorrectMark, h.TotalMark, h.Status FROM HistoryTest as h WHERE h.UserId = @userId AND h.CategoryExamId = @categoryExamId AND Id != 1
 ORDER BY Id asc
 END
 GO
@@ -345,11 +345,11 @@ CREATE PROC App_HistoryTest_GetAllByAdmin
 @keySearch nvarchar(250)
 AS
 BEGIN
-SELECT h.Id, a.Name as 'AccountName',c.Name as 'CategoryExamName', h.CorectMark, h.TotalMark, h.Status 
+SELECT h.Id, a.Name as 'AccountName',c.Name as 'CategoryExamName', h.CorrectMark, h.TotalMark, h.Status
 FROM HistoryTest as h 
 LEFT JOIN Account as a ON h.UserId = a.Id 
 LEFT JOIN CategoryExam as c ON h.CategoryExamId = c.Id 
-WHERE h.Id != 1 AND a.Name Like '%'+@keySearch+'%' or c.Name Like '%'+@keySearch+'%' or h.Status Like '%'+@keySearch+'%'
+WHERE h.Id != 1 AND (a.Name Like '%'+@keySearch+'%' or c.Name Like '%'+@keySearch+'%' or h.Status = @keySearch)
 ORDER BY h.Id desc
 END
 GO
@@ -386,11 +386,11 @@ GO
 
 CREATE PROC App_HistoryTest_Update
 @id int,
-@corectMark int,
+@correctMark int,
 @totalMark int
 AS 
 BEGIN
-UPDATE HistoryTest SET CorectMark=@corectMark, TotalMark = @totalMark, [Status] = 1 WHERE id = @id
+UPDATE HistoryTest SET CorrectMark=@correctMark, TotalMark = @totalMark, [Status] = 1 WHERE id = @id
 END
 GO
 
@@ -410,8 +410,9 @@ SELECT * FROM Question
 SELECT * FROM Account ORDER BY Id OFFSET 1 ROWS FETCH NEXT 10 ROWS ONLY
 
 EXEC App_Account_CountDataOfGetAll @keySearch = 'Admin'
-EXEC App_HistoryTest_Add @UserId = 2, @CategoryExamId = 2
-DROP PROCEDURE App_Question_GetAll
+EXEC App_HistoryTest_Add @UserId = 2, @CategoryExamId = 1
+EXEC App_HistoryTest_GetAllByAdmin @keySearch = false
+DROP PROCEDURE App_HistoryTest_GetAllByAdmin
 
 UPDATE Account SET [Image] = null
 

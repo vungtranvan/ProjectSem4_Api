@@ -16,7 +16,7 @@ public class HistoryVm implements Serializable {
     private int _id;
     private String accountName;
     private String categoryExamName;
-    private int corectMark;
+    private int correctMark;
     private int totalMark;
     private boolean status;
 
@@ -44,12 +44,12 @@ public class HistoryVm implements Serializable {
         this._id = _id;
     }
 
-    public int getCorectMark() {
-        return corectMark;
+    public int getCorrectMark() {
+        return correctMark;
     }
 
-    public void setCorectMark(int corectMark) {
-        this.corectMark = corectMark;
+    public void setCorrectMark(int correctMark) {
+        this.correctMark = correctMark;
     }
 
     public int getTotalMark() {
