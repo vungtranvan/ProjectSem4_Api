@@ -411,7 +411,7 @@ SELECT * FROM Account ORDER BY Id OFFSET 1 ROWS FETCH NEXT 10 ROWS ONLY
 
 EXEC App_Account_CountDataOfGetAll @keySearch = 'Admin'
 EXEC App_HistoryTest_Add @UserId = 2, @CategoryExamId = 1
-EXEC App_HistoryTest_GetAllByAdmin @keySearch = false
+EXEC App_HistoryTest_GetAllByAdmin @keySearch = 'false'
 DROP PROCEDURE App_HistoryTest_GetAllByAdmin
 
 UPDATE Account SET [Image] = null
