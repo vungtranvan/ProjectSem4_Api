@@ -5,9 +5,8 @@
         <group>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dto/QuestionHistoryVm.java</file>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/services/QuestionService.java</file>
-            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/HistoryDAO.java</file>
-            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/services/HistoryService.java</file>
-            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dto/HistoryVm.java</file>
+            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/entities/Question.java</file>
+            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/QuestionDAO.java</file>
         </group>
     </open-files>
 </project-private>

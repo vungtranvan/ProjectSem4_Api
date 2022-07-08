@@ -54,7 +54,7 @@ public class QuestionDAO implements IQuestionDAO {
         Connection conn = DBManager.openConnection();
 
         try {
-            stm = conn.prepareCall("{call App_Account_GetById(?)}");
+            stm = conn.prepareCall("{call App_Question_GetById(?)}");
             stm.setInt(1, id);
             rs = stm.executeQuery();
             if (rs.next()) {
