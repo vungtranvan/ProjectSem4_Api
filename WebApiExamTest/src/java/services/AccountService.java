@@ -3,7 +3,7 @@ package services;
 import com.google.gson.Gson;
 import dao.interfaces.IAccountDAO;
 import dao.AccountDAO;
-import dto.ChangPasswordDto;
+import view_models.ChangPasswordVm;
 import entities.Account;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -104,16 +104,16 @@ public class AccountService {
         return result;
     }
 
-    @POST
-    @Path("/updatePasswordByUsername")
+    @PUT
+    @Path("/updatePasswordByUserId")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String updatePasswordByUsername(String strData) {
+    public String updatePasswordByUserId(String strData) {
         Gson son = new Gson();
-        ChangPasswordDto entity = son.fromJson(strData, ChangPasswordDto.class);
+        ChangPasswordVm entity = son.fromJson(strData, ChangPasswordVm.class);
         if (!entity.getPassword().equals(entity.getConfirmPassword())) {
             return "false";
         }
-        boolean bl = dao.updatePasswordByUsername(entity);
+        boolean bl = dao.updatePasswordByUserId(entity);
         String result = son.toJson(bl);
         return result;
     }

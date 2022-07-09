@@ -3,7 +3,7 @@ package services;
 import com.google.gson.Gson;
 import dao.interfaces.IQuestionDAO;
 import dao.QuestionDAO;
-import dto.QuestionVm;
+import view_models.QuestionVm;
 import entities.Question;
 import java.util.List;
 import javax.ejb.Stateless;

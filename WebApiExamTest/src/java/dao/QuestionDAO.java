@@ -2,7 +2,7 @@ package dao;
 
 import dao.interfaces.IQuestionDAO;
 import db.DBManager;
-import dto.QuestionVm;
+import view_models.QuestionVm;
 import entities.Question;
 import java.sql.CallableStatement;
 import java.sql.Connection;

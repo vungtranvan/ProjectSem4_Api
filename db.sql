@@ -254,11 +254,11 @@ END
 GO
 
 CREATE PROC App_Account_UpdatePassword
-@userName varchar(25),
+@userId int,
 @password varchar(Max)
 AS 
 BEGIN
-UPDATE Account SET [Password]=@password WHERE UserName = @userName
+UPDATE Account SET [Password]=@password WHERE Id = @userId
 END
 GO
 
@@ -410,9 +410,9 @@ SELECT * FROM Question
 SELECT * FROM Account ORDER BY Id OFFSET 1 ROWS FETCH NEXT 10 ROWS ONLY
 
 EXEC App_Account_CountDataOfGetAll @keySearch = 'Admin'
-EXEC App_HistoryTest_Add @UserId = 2, @CategoryExamId = 1
+EXEC App_HistoryTest_Add @UserId = 1, @CategoryExamId = 1
 EXEC App_HistoryTest_GetAllByAdmin @keySearch = 'false'
-DROP PROCEDURE App_HistoryTest_GetAllByAdmin
+DROP PROCEDURE App_Account_UpdatePassword
 
 UPDATE Account SET [Image] = null
 

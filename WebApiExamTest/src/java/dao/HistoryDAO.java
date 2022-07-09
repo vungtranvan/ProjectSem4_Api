@@ -2,9 +2,9 @@ package dao;
 
 import dao.interfaces.IHistoryDAO;
 import db.DBManager;
-import dto.HistoryUpdateVm;
-import dto.HistoryVm;
-import dto.QuestionHistoryVm;
+import view_models.HistoryUpdateVm;
+import view_models.HistoryVm;
+import view_models.QuestionHistoryVm;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;

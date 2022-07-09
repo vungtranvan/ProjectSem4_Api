@@ -1,4 +1,4 @@
-package dto;
+package view_models;
 
 import java.io.Serializable;
 
@@ -6,21 +6,21 @@ import java.io.Serializable;
  *
  * @author vungk
  */
-public class ChangPasswordDto implements Serializable {
+public class ChangPasswordVm implements Serializable {
 
-    private String userName;
+    private int userId;
     private String password;
     private String confirmPassword;
 
-    public ChangPasswordDto() {
+    public ChangPasswordVm() {
     }
 
-    public String getUserName() {
-        return userName;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {

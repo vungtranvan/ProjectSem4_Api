@@ -2,7 +2,7 @@ package dao;
 
 import dao.interfaces.IAccountDAO;
 import db.DBManager;
-import dto.ChangPasswordDto;
+import view_models.ChangPasswordVm;
 import entities.Account;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -222,13 +222,13 @@ public class AccountDAO implements IAccountDAO {
     }
 
     @Override
-    public boolean updatePasswordByUsername(ChangPasswordDto input) {
+    public boolean updatePasswordByUserId(ChangPasswordVm input) {
         CallableStatement stm = null;
         Connection conn = DBManager.openConnection();
 
         try {
             stm = conn.prepareCall("{call App_Account_UpdatePassword(?,?)}");
-            stm.setString(1, input.getUserName());
+            stm.setInt(1, input.getUserId());
             stm.setString(2, input.getPassword());
 
             int i = stm.executeUpdate();

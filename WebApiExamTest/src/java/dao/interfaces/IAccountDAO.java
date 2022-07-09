@@ -1,6 +1,6 @@
 package dao.interfaces;
 
-import dto.ChangPasswordDto;
+import view_models.ChangPasswordVm;
 import entities.Account;
 import java.util.List;
 
@@ -24,5 +24,5 @@ public interface IAccountDAO {
 
     public boolean đelete(int id);
 
-    public boolean updatePasswordByUsername(ChangPasswordDto input);
+    public boolean updatePasswordByUserId(ChangPasswordVm input);
 }
