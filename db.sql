@@ -349,7 +349,7 @@ SELECT h.Id, a.Name as 'AccountName',c.Name as 'CategoryExamName', h.CorrectMark
 FROM HistoryTest as h 
 LEFT JOIN Account as a ON h.UserId = a.Id 
 LEFT JOIN CategoryExam as c ON h.CategoryExamId = c.Id 
-WHERE h.Id != 1 AND (a.Name Like '%'+@keySearch+'%' or c.Name Like '%'+@keySearch+'%' or h.Status = @keySearch)
+WHERE h.Id != 1 AND (a.Name Like '%'+@keySearch+'%' or c.Name Like '%'+@keySearch+'%')
 ORDER BY h.Id desc
 END
 GO
@@ -412,7 +412,7 @@ SELECT * FROM Account ORDER BY Id OFFSET 1 ROWS FETCH NEXT 10 ROWS ONLY
 EXEC App_Account_CountDataOfGetAll @keySearch = 'Admin'
 EXEC App_HistoryTest_Add @UserId = 1, @CategoryExamId = 1
 EXEC App_HistoryTest_GetAllByAdmin @keySearch = 'false'
-DROP PROCEDURE App_Account_UpdatePassword
+DROP PROCEDURE App_HistoryTest_GetAllByAdmin
 
 UPDATE Account SET [Image] = null
 
