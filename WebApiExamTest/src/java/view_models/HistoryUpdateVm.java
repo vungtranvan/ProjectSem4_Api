@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class HistoryUpdateVm implements Serializable{
     private int _id;
-    private int corectMark;
+    private int correctMark;
     private int totalMark;
     private List<QuestionHistoryVm> items;
 
@@ -21,12 +21,12 @@ public class HistoryUpdateVm implements Serializable{
         this._id = _id;
     }
 
-    public int getCorectMark() {
-        return corectMark;
+    public int getCorrectMark() {
+        return correctMark;
     }
 
-    public void setCorectMark(int corectMark) {
-        this.corectMark = corectMark;
+    public void setCorrectMark(int correctMark) {
+        this.correctMark = correctMark;
     }
 
     public int getTotalMark() {

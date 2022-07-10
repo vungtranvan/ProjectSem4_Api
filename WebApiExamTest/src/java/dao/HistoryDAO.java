@@ -146,7 +146,7 @@ public class HistoryDAO implements IHistoryDAO {
         try {
             stm = conn.prepareCall("{call App_HistoryTest_Update(?,?,?)}");
             stm.setInt(1, model.getId());
-            stm.setInt(2, model.getCorectMark());
+            stm.setInt(2, model.getCorrectMark());
             stm.setInt(3, model.getTotalMark());
             stm.executeUpdate();
 
