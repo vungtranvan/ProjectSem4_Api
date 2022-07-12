@@ -63,9 +63,9 @@ INSERT INTO CategoryExam([Name]) VALUES (N'Toán'),(N'Văn'),(N'Anh')
 go
 
 INSERT INTO Account(UserName,[Password],[Name],Email,[Address],Sex,IsAdmin) VALUES 
-('Admin','Admin@123',N'Admin Manager','admin@gmail.com',N'Hà Nội',1,1),
-('VungTran','Demo@123',N'Vững Trần Văn','vungtran@gmail.com',N'Ba Vì',1,0),
-('Demo01','Demo@123',N'Cô Đơn Dành Cho Ai','demo01@gmail.com',N'Cà Mau',0,0)
+('Admin','0e7517141fb53f21ee439b355b5a1d0a',N'Admin Manager','admin@gmail.com',N'Hà Nội',1,1), -- password: Admin@123
+('VungTran','e14c05f0dc27e6be1fc127abaf474a59',N'Vững Trần Văn','vungtran@gmail.com',N'Ba Vì',1,0), -- password: Demo@123
+('Demo01','e14c05f0dc27e6be1fc127abaf474a59',N'Cô Đơn Dành Cho Ai','demo01@gmail.com',N'Cà Mau',0,0) -- password: Demo@123
 go
 
 INSERT INTO Question([Name],CategoryExamId,Answer_a,Answer_b,Answer_c,Answer_d,AnswerCorrect,[Image]) VALUES
