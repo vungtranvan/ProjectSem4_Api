@@ -98,7 +98,7 @@ public class AccountService {
     @DELETE
     @Path("/deleteAccount/{id}")
     public String delete(@PathParam("id") int id) {
-        boolean bl = dao.đelete(id);
+        boolean bl = dao.delete(id);
         Gson son = new Gson();
         String result = son.toJson(bl);
         return result;

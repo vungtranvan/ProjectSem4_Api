@@ -23,5 +23,5 @@ public interface IQuestionDAO {
 
     public boolean edit(Question entity);
 
-    public boolean đelete(int id);
+    public boolean delete(int id);
 }

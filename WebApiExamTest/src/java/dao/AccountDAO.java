@@ -202,7 +202,7 @@ public class AccountDAO implements IAccountDAO {
     }
 
     @Override
-    public boolean đelete(int id) {
+    public boolean delete(int id) {
         CallableStatement stm = null;
 
         Connection conn = DBManager.openConnection();

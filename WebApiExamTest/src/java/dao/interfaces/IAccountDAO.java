@@ -22,7 +22,7 @@ public interface IAccountDAO {
 
     public boolean edit(Account entity);
 
-    public boolean đelete(int id);
+    public boolean delete(int id);
 
     public boolean updatePasswordByUserId(ChangPasswordVm input);
 }
