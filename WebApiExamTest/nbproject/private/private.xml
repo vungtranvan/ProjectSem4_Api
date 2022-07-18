@@ -4,10 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/AccountDAO.java</file>
-            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/view_models/HistoryUpdateVm.java</file>
+            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/interfaces/IAccountDAO.java</file>
+            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/services/QuestionService.java</file>
+            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/services/AccountService.java</file>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/HistoryDAO.java</file>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/services/HistoryService.java</file>
             <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/view_models/QuestionHistoryVm.java</file>
+            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/QuestionDAO.java</file>
+            <file>file:/D:/EprojectSem4/WebApiExamTest/src/java/dao/interfaces/IQuestionDAO.java</file>
         </group>
     </open-files>
 </project-private>

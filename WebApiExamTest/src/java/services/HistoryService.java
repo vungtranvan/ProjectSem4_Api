@@ -33,14 +33,14 @@ public class HistoryService {
     }
 
     @GET
-    @Path("/getAllByAdmin")
+    @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
     public List<HistoryVm> getAll(@QueryParam("keySearch") String keySearch) {
         return dao.getAll(keySearch);
     }
     
     @GET
-    @Path("/getAllByMember/{userId}/{categoryExamId}")
+    @Path("/getAllByUserIdAndCategoryExamId/{userId}/{categoryExamId}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<HistoryVm> getAll(@PathParam("userId") int userId, @PathParam("categoryExamId") int categoryExamId) {
         return dao.getAll(userId, categoryExamId);
